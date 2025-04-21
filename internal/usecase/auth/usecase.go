@@ -15,7 +15,7 @@ import (
 
 var (
 	ErrInvalidCredentials = errors.New("invalid credentials")
-	ErrExistingUser       = errors.New("email already in use")
+	ErrExistingUser       = errors.New("username already in use")
 	ErrUserNotActive      = errors.New("user account is not active")
 	ErrBlackListed        = errors.New("access token is blacklisted")
 	ErrMinLengthPswd      = errors.New("password length must be between 6 and 128 characters")
@@ -26,9 +26,9 @@ var _ AuthUseCase = (*auth)(nil)
 // AuthUseCase - интерфейс для аутентификации
 type AuthUseCase interface {
 	// Register - регистрация нового пользователя
-	Register(email string, password string) (userId string, err error)
+	Register(username string, password string) (userId string, err error)
 	// Login - авторизация пользователя
-	Login(email string, password string) (accessToken, refreshToken string, err error)
+	Login(username string, password string) (accessToken, refreshToken string, err error)
 	// RefreshToken - обновление токена
 	RefreshToken(refreshToken string) (accessToken string, err error)
 	// ValidateToken - проверка токена
@@ -83,9 +83,9 @@ func (uc *auth) Register(username string, password string) (string, error) { // 
 }
 
 // Login - авторизация пользователя
-func (uc *auth) Login(email string, password string) (string, string, error) {
+func (uc *auth) Login(username string, password string) (string, string, error) {
 	// Получаем пользователя
-	curUser, err := uc.userRepo.GetUserByUsername(context.Background(), email)
+	curUser, err := uc.userRepo.GetUserByUsername(context.Background(), username)
 	if err != nil || curUser == nil {
 		return "", "", ErrInvalidCredentials
 	}

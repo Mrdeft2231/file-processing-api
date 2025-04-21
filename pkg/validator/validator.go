@@ -23,8 +23,8 @@ func parseValidationError(err error) string {
 			switch e.Tag() {
 			case "required":
 				messages = append(messages, fmt.Sprintf("Field %s is required", e.Field()))
-			case "email":
-				messages = append(messages, fmt.Sprintf("Field %s must be a valid email", e.Field()))
+			case "username":
+				messages = append(messages, fmt.Sprintf("Field %s must be a valid username", e.Field()))
 			case "min":
 				messages = append(messages, fmt.Sprintf("Field %s must have at least %s characters", e.Field(), e.Param()))
 			case "max":

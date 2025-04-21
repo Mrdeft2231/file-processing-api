@@ -12,8 +12,8 @@ var _ Repository = (*repository)(nil)
 type Repository interface {
 	// CreateUser - создание нового пользователя
 	CreateUser(ctx context.Context, user *entity.User) (string, error)
-	// GetUserByUsername - получение пользователя по email
-	GetUserByUsername(ctx context.Context, email string) (*entity.User, error)
+	// GetUserByUsername - получение пользователя по username
+	GetUserByUsername(ctx context.Context, username string) (*entity.User, error)
 	// GetUserById - получение пользователя по id
 	GetUserById(ctx context.Context, id string) (*entity.User, error)
 }
