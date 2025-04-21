@@ -3,11 +3,34 @@ package validator
 import (
 	"errors"
 	"fmt"
-	"github.com/go-playground/validator/v10"
 	"strings"
+	"unicode"
+
+	"github.com/go-playground/validator/v10"
 )
 
 var validate = validator.New()
+
+func init() {
+	// Register custom validation function for username
+	_ = validate.RegisterValidation("username", func(fl validator.FieldLevel) bool {
+		username := fl.Field().String()
+
+		// Username must be between 3 and 32 characters
+		if len(username) < 3 || len(username) > 32 {
+			return false
+		}
+
+		// Username can only contain letters, numbers, underscores and hyphens
+		for _, char := range username {
+			if !unicode.IsLetter(char) && !unicode.IsNumber(char) && char != '_' && char != '-' {
+				return false
+			}
+		}
+
+		return true
+	})
+}
 
 func ValidateRequest(req interface{}) error {
 	if err := validate.Struct(req); err != nil {
