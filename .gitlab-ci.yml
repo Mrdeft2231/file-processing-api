@@ -1,0 +1,46 @@
+image: golang:1.23.4
+
+stages:
+  - build
+  - test
+  - coverage
+
+variables:
+  GO_VERSION: "1.23.4"
+  COVERAGE_THRESHOLD: 30
+
+before_script:
+  - go version
+  - go env
+  - go mod download
+
+build:
+  stage: build
+  script:
+    - go build -v ./...
+  artifacts:
+    paths:
+      - auth-api
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - go test -v ./... -coverprofile=coverage.out
+  artifacts:
+    paths:
+      - coverage.out
+    expire_in: 1 week
+
+coverage:
+  stage: coverage
+  script:
+    - go tool cover -func=coverage.out
+    - COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
+    - echo "Coverage: $COVERAGE%"
+    - if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
+        echo "Coverage is below threshold of $COVERAGE_THRESHOLD%"
+        exit 1
+      fi
+  dependencies:
+    - test 
