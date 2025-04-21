@@ -3,7 +3,7 @@ app:
   version: "0.0.1" # Версия приложения
 
 grpc:
-  port: 60051
+  port: 50051
   timeout: 30
 
 logger:

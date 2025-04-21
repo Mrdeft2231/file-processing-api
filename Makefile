@@ -23,8 +23,7 @@ run-dev:
 
 # Создание миграций
 migrations-create:
-	@read -p "Enter migration name: " name; \
-	migrate create -ext sql -dir $(MIGRATIONS_DIR) -seq $$name
+	migrate create -ext sql -dir $(MIGRATIONS_DIR) -seq $(name)
 
 # Применение миграций
 migrate-up:

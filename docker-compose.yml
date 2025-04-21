@@ -38,7 +38,7 @@ services:
       - ./migrations:/app/migrations
       - ./config:/app/config
     ports:
-      - "60051:60051"
+      - "50051:50051"
     command: >
       sh -c "
         /app/migrate up &&
