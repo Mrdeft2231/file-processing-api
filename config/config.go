@@ -14,7 +14,7 @@ type (
 		GRPC       GRPCConfig       `yaml:"grpc"`   // Инфа по gRPC сервера
 		Token      TokenConfig      `yaml:"token"`  // Инфа по токену
 		Log        LogConfig        `yaml:"logger"` // Уровень логгирования
-		PG         PGConfig         // Данные по Postgres
+		PG         PGConfig         `yaml:"postgres"`
 		Migrations MigrationsConfig `yaml:"migrations"` // путь к миграциям
 	}
 	// AppConfig - структура конфига приложения
@@ -33,17 +33,17 @@ type (
 	}
 	// PGConfig - структура конфига базы данных
 	PGConfig struct {
-		User        string        `env:"PG_USER"`
-		Password    string        `env:"PG_PASSWORD"`
-		Host        string        `env:"PG_HOST"`
-		Port        int           `env:"PG_PORT"`
-		DbName      string        `env:"PG_DBNAME"`
-		MaxConns    int32         `env:"DB_MAX_CONNS"`
-		ConnTimeout time.Duration `env:"DB_CONN_TIMEOUT"`
+		User        string        `yaml:"pg_user"`
+		Password    string        `yaml:"pg_password"`
+		Host        string        `yaml:"pg_host"`
+		Port        int           `yaml:"pg_port"`
+		DbName      string        `yaml:"pg_db_name"`
+		MaxConns    int32         `yaml:"db_max_connections"`
+		ConnTimeout time.Duration `yaml:"db_connection_timeout"`
 	}
 	// TokenConfig - структура конфига токена
 	TokenConfig struct {
-		Secret     string        `env:"TOKEN_SECRET"`
+		Secret     string        `yaml:"token_secret"`
 		AccessTTL  time.Duration `yaml:"accessTTL"`
 		RefreshTTL time.Duration `yaml:"refreshTTL"`
 	}
@@ -79,19 +79,12 @@ func (p PGConfig) MigrationsURL() string {
 func NewConfig() (*Config, error) {
 	// Создаем конфигурацию
 	cfg := &Config{}
-
 	// Загружаем конфигурацию с использованием cleanenv
 	if err := cleanenv.ReadConfig("./config/config.yaml", cfg); err != nil {
 		log.Println("Error loading environment variables:", err)
 		return nil, err
 	}
-
-	if err := cleanenv.ReadEnv(cfg); err != nil {
-		log.Println("Error loading environment variables:", err)
-		return nil, err
-	}
+	fmt.Println(cfg)
 
 	return cfg, nil
 }
-
-

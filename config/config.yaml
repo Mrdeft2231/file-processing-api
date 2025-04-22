@@ -1,17 +1,27 @@
 app:
-  name: "auth-api" # Имя приложения
-  version: "0.0.1" # Версия приложения
+  name: "auth-api"
+  version: "0.0.1"
 
 grpc:
   port: 50051
   timeout: 30
 
 logger:
-  level: 'debug'
+  level: "debug"
+
+postgres:
+  pg_user: "postgres"
+  pg_password: "postgres"
+  pg_host: "localhost"
+  pg_port: 5432
+  pg_db_name: "postgres"
+  db_max_connections: 2
+  db_connection_timeout: 30s
 
 token:
-  accessTTL: "30m"
-  refreshTTL: "720h"
+  token_secret: "your-secret-key-here"
+  accessTTL: 15m      # 15 minutes
+  refreshTTL: 168h    # 1 week
 
 migrations:
   path: "./migrations"
