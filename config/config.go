@@ -84,7 +84,5 @@ func NewConfig() (*Config, error) {
 		log.Println("Error loading environment variables:", err)
 		return nil, err
 	}
-	fmt.Println(cfg)
-
 	return cfg, nil
 }
