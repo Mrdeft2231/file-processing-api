@@ -39,7 +39,7 @@ COPY config/config.yaml /app/config/config.yaml
 COPY migrations /app/migrations
 
 # Указываем порт, на котором работает приложение
-EXPOSE 60051
+EXPOSE 50051
 
 # Запускаем выполнение миграций перед запуском приложения
 CMD ["/bin/sh", "-c", "/app/migrate up && /app/go-auth"]
