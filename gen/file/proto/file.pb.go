@@ -21,27 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetFileRequest struct {
+type GetFilesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetFileRequest) Reset() {
-	*x = GetFileRequest{}
+func (x *GetFilesRequest) Reset() {
+	*x = GetFilesRequest{}
 	mi := &file_proto_file_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetFileRequest) String() string {
+func (x *GetFilesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetFileRequest) ProtoMessage() {}
+func (*GetFilesRequest) ProtoMessage() {}
 
-func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
+func (x *GetFilesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_file_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,19 +53,19 @@ func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetFileRequest.ProtoReflect.Descriptor instead.
-func (*GetFileRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetFilesRequest.ProtoReflect.Descriptor instead.
+func (*GetFilesRequest) Descriptor() ([]byte, []int) {
 	return file_proto_file_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetFileRequest) GetUserId() string {
+func (x *GetFilesRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
 	return ""
 }
 
-type GetFileResponse struct {
+type GetFilesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FileId        string                 `protobuf:"bytes,1,opt,name=file_id,json=fileId,proto3" json:"file_id,omitempty"`
 	FileName      string                 `protobuf:"bytes,2,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
@@ -75,20 +75,20 @@ type GetFileResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetFileResponse) Reset() {
-	*x = GetFileResponse{}
+func (x *GetFilesResponse) Reset() {
+	*x = GetFilesResponse{}
 	mi := &file_proto_file_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetFileResponse) String() string {
+func (x *GetFilesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetFileResponse) ProtoMessage() {}
+func (*GetFilesResponse) ProtoMessage() {}
 
-func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
+func (x *GetFilesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_file_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -100,33 +100,33 @@ func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetFileResponse.ProtoReflect.Descriptor instead.
-func (*GetFileResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetFilesResponse.ProtoReflect.Descriptor instead.
+func (*GetFilesResponse) Descriptor() ([]byte, []int) {
 	return file_proto_file_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetFileResponse) GetFileId() string {
+func (x *GetFilesResponse) GetFileId() string {
 	if x != nil {
 		return x.FileId
 	}
 	return ""
 }
 
-func (x *GetFileResponse) GetFileName() string {
+func (x *GetFilesResponse) GetFileName() string {
 	if x != nil {
 		return x.FileName
 	}
 	return ""
 }
 
-func (x *GetFileResponse) GetFilePath() string {
+func (x *GetFilesResponse) GetFilePath() string {
 	if x != nil {
 		return x.FilePath
 	}
 	return ""
 }
 
-func (x *GetFileResponse) GetFormat() string {
+func (x *GetFilesResponse) GetFormat() string {
 	if x != nil {
 		return x.Format
 	}
@@ -135,10 +135,7 @@ func (x *GetFileResponse) GetFormat() string {
 
 type UploadFileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FileName      string                 `protobuf:"bytes,1,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
-	Format        string                 `protobuf:"bytes,2,opt,name=format,proto3" json:"format,omitempty"`
-	FileData      []byte                 `protobuf:"bytes,3,opt,name=file_data,json=fileData,proto3" json:"file_data,omitempty"`
-	UserId        string                 `protobuf:"bytes,4,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -173,32 +170,11 @@ func (*UploadFileRequest) Descriptor() ([]byte, []int) {
 	return file_proto_file_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UploadFileRequest) GetFileName() string {
+func (x *UploadFileRequest) GetChunk() []byte {
 	if x != nil {
-		return x.FileName
-	}
-	return ""
-}
-
-func (x *UploadFileRequest) GetFormat() string {
-	if x != nil {
-		return x.Format
-	}
-	return ""
-}
-
-func (x *UploadFileRequest) GetFileData() []byte {
-	if x != nil {
-		return x.FileData
+		return x.Chunk
 	}
 	return nil
-}
-
-func (x *UploadFileRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
 }
 
 type UploadFileResponse struct {
@@ -665,19 +641,16 @@ var File_proto_file_proto protoreflect.FileDescriptor
 
 const file_proto_file_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/file.proto\x12\x0ffile_processing\")\n" +
-	"\x0eGetFileRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"|\n" +
-	"\x0fGetFileResponse\x12\x17\n" +
+	"\x10proto/file.proto\x12\x0ffile_processing\"*\n" +
+	"\x0fGetFilesRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"}\n" +
+	"\x10GetFilesResponse\x12\x17\n" +
 	"\afile_id\x18\x01 \x01(\tR\x06fileId\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12\x1b\n" +
 	"\tfile_path\x18\x03 \x01(\tR\bfilePath\x12\x16\n" +
-	"\x06format\x18\x04 \x01(\tR\x06format\"~\n" +
-	"\x11UploadFileRequest\x12\x1b\n" +
-	"\tfile_name\x18\x01 \x01(\tR\bfileName\x12\x16\n" +
-	"\x06format\x18\x02 \x01(\tR\x06format\x12\x1b\n" +
-	"\tfile_data\x18\x03 \x01(\fR\bfileData\x12\x17\n" +
-	"\auser_id\x18\x04 \x01(\tR\x06userId\"G\n" +
+	"\x06format\x18\x04 \x01(\tR\x06format\")\n" +
+	"\x11UploadFileRequest\x12\x14\n" +
+	"\x05chunk\x18\x01 \x01(\fR\x05chunk\"G\n" +
 	"\x12UploadFileResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x17\n" +
 	"\afile_id\x18\x02 \x01(\tR\x06fileId\"f\n" +
@@ -704,11 +677,11 @@ const file_proto_file_proto_rawDesc = "" +
 	"\afile_id\x18\x01 \x01(\tR\x06fileId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\"3\n" +
 	"\x13AnalyzeFileResponse\x12\x1c\n" +
-	"\tstructure\x18\x01 \x01(\tR\tstructure2\x98\x04\n" +
-	"\x0eFileProcessing\x12M\n" +
-	"\bGetFiles\x12\x1f.file_processing.GetFileRequest\x1a .file_processing.GetFileResponse\x12U\n" +
+	"\tstructure\x18\x01 \x01(\tR\tstructure2\x9c\x04\n" +
+	"\x0eFileProcessing\x12O\n" +
+	"\bGetFiles\x12 .file_processing.GetFilesRequest\x1a!.file_processing.GetFilesResponse\x12W\n" +
 	"\n" +
-	"UploadFile\x12\".file_processing.UploadFileRequest\x1a#.file_processing.UploadFileResponse\x12U\n" +
+	"UploadFile\x12\".file_processing.UploadFileRequest\x1a#.file_processing.UploadFileResponse(\x01\x12U\n" +
 	"\n" +
 	"SearchFile\x12\".file_processing.SearchFileRequest\x1a#.file_processing.SearchFileResponse\x12X\n" +
 	"\vConvertFile\x12#.file_processing.ConvertFileRequest\x1a$.file_processing.ConvertFileResponse\x12U\n" +
@@ -730,8 +703,8 @@ func file_proto_file_proto_rawDescGZIP() []byte {
 
 var file_proto_file_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_proto_file_proto_goTypes = []any{
-	(*GetFileRequest)(nil),      // 0: file_processing.GetFileRequest
-	(*GetFileResponse)(nil),     // 1: file_processing.GetFileResponse
+	(*GetFilesRequest)(nil),     // 0: file_processing.GetFilesRequest
+	(*GetFilesResponse)(nil),    // 1: file_processing.GetFilesResponse
 	(*UploadFileRequest)(nil),   // 2: file_processing.UploadFileRequest
 	(*UploadFileResponse)(nil),  // 3: file_processing.UploadFileResponse
 	(*SearchFileRequest)(nil),   // 4: file_processing.SearchFileRequest
@@ -744,13 +717,13 @@ var file_proto_file_proto_goTypes = []any{
 	(*AnalyzeFileResponse)(nil), // 11: file_processing.AnalyzeFileResponse
 }
 var file_proto_file_proto_depIdxs = []int32{
-	0,  // 0: file_processing.FileProcessing.GetFiles:input_type -> file_processing.GetFileRequest
+	0,  // 0: file_processing.FileProcessing.GetFiles:input_type -> file_processing.GetFilesRequest
 	2,  // 1: file_processing.FileProcessing.UploadFile:input_type -> file_processing.UploadFileRequest
 	4,  // 2: file_processing.FileProcessing.SearchFile:input_type -> file_processing.SearchFileRequest
 	6,  // 3: file_processing.FileProcessing.ConvertFile:input_type -> file_processing.ConvertFileRequest
 	8,  // 4: file_processing.FileProcessing.DeleteFile:input_type -> file_processing.DeleteFileRequest
 	10, // 5: file_processing.FileProcessing.AnalyzeFile:input_type -> file_processing.AnalyzeFileRequest
-	1,  // 6: file_processing.FileProcessing.GetFiles:output_type -> file_processing.GetFileResponse
+	1,  // 6: file_processing.FileProcessing.GetFiles:output_type -> file_processing.GetFilesResponse
 	3,  // 7: file_processing.FileProcessing.UploadFile:output_type -> file_processing.UploadFileResponse
 	5,  // 8: file_processing.FileProcessing.SearchFile:output_type -> file_processing.SearchFileResponse
 	7,  // 9: file_processing.FileProcessing.ConvertFile:output_type -> file_processing.ConvertFileResponse
