@@ -9,37 +9,36 @@ import "google/api/annotations.proto";
 service FileProcessing {
   rpc GetFiles(GetFilesRequest) returns (GetFilesResponse) {
     option (google.api.http) = {
-      get: "v1/files/getFiles"
-      body: "*"
+      get: "/v1/files/getFiles"
     };
   }
   rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {
     option (google.api.http) = {
-      post: "v1/files/uploadFile"
+      post: "/v1/files/uploadFile"
       body: "*"
     };
   }
   rpc SearchFile(SearchFileRequest) returns (SearchFileResponse) {
     option (google.api.http) = {
-      get: "v1/files/searchFile"
+      post: "/v1/files/searchFile"
       body: "*"
     };
   }
   rpc ConvertFile(ConvertFileRequest) returns (ConvertFileResponse) {
     option (google.api.http) = {
-      get: "v1/files/convertFile"
+      post: "/v1/files/convertFile"
       body: "*"
     };
   }
   rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {
     option (google.api.http) = {
-      get: "v1/files/deleteFile"
+      post: "/v1/files/deleteFile"
       body: "*"
     };
   }
   rpc AnalyzeFile(AnalyzeFileRequest) returns (AnalyzeFileResponse) {
     option (google.api.http) = {
-      get: "v1/files/analyzeFile"
+      post: "/v1/files/analyzeFile"
       body: "*"
     };
   }

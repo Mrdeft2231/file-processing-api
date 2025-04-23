@@ -2,11 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.21.12
-// source: proto/file.proto
+// source: file.proto
 
 package file
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -30,7 +31,7 @@ type GetFilesRequest struct {
 
 func (x *GetFilesRequest) Reset() {
 	*x = GetFilesRequest{}
-	mi := &file_proto_file_proto_msgTypes[0]
+	mi := &file_file_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +43,7 @@ func (x *GetFilesRequest) String() string {
 func (*GetFilesRequest) ProtoMessage() {}
 
 func (x *GetFilesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[0]
+	mi := &file_file_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +56,7 @@ func (x *GetFilesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFilesRequest.ProtoReflect.Descriptor instead.
 func (*GetFilesRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{0}
+	return file_file_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetFilesRequest) GetUserId() string {
@@ -79,7 +80,7 @@ type GetFilesResponse struct {
 
 func (x *GetFilesResponse) Reset() {
 	*x = GetFilesResponse{}
-	mi := &file_proto_file_proto_msgTypes[1]
+	mi := &file_file_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -91,7 +92,7 @@ func (x *GetFilesResponse) String() string {
 func (*GetFilesResponse) ProtoMessage() {}
 
 func (x *GetFilesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[1]
+	mi := &file_file_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +105,7 @@ func (x *GetFilesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFilesResponse.ProtoReflect.Descriptor instead.
 func (*GetFilesResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{1}
+	return file_file_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetFilesResponse) GetFileId() string {
@@ -159,7 +160,7 @@ type UploadFileRequest struct {
 
 func (x *UploadFileRequest) Reset() {
 	*x = UploadFileRequest{}
-	mi := &file_proto_file_proto_msgTypes[2]
+	mi := &file_file_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +172,7 @@ func (x *UploadFileRequest) String() string {
 func (*UploadFileRequest) ProtoMessage() {}
 
 func (x *UploadFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[2]
+	mi := &file_file_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +185,7 @@ func (x *UploadFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UploadFileRequest.ProtoReflect.Descriptor instead.
 func (*UploadFileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{2}
+	return file_file_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UploadFileRequest) GetFilename() string {
@@ -211,7 +212,7 @@ type UploadFileResponse struct {
 
 func (x *UploadFileResponse) Reset() {
 	*x = UploadFileResponse{}
-	mi := &file_proto_file_proto_msgTypes[3]
+	mi := &file_file_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -223,7 +224,7 @@ func (x *UploadFileResponse) String() string {
 func (*UploadFileResponse) ProtoMessage() {}
 
 func (x *UploadFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[3]
+	mi := &file_file_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -236,7 +237,7 @@ func (x *UploadFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UploadFileResponse.ProtoReflect.Descriptor instead.
 func (*UploadFileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{3}
+	return file_file_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UploadFileResponse) GetMessage() string {
@@ -264,7 +265,7 @@ type SearchFileRequest struct {
 
 func (x *SearchFileRequest) Reset() {
 	*x = SearchFileRequest{}
-	mi := &file_proto_file_proto_msgTypes[4]
+	mi := &file_file_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -276,7 +277,7 @@ func (x *SearchFileRequest) String() string {
 func (*SearchFileRequest) ProtoMessage() {}
 
 func (x *SearchFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[4]
+	mi := &file_file_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -289,7 +290,7 @@ func (x *SearchFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchFileRequest.ProtoReflect.Descriptor instead.
 func (*SearchFileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{4}
+	return file_file_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SearchFileRequest) GetFileId() string {
@@ -322,7 +323,7 @@ type SearchFileResponse struct {
 
 func (x *SearchFileResponse) Reset() {
 	*x = SearchFileResponse{}
-	mi := &file_proto_file_proto_msgTypes[5]
+	mi := &file_file_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -334,7 +335,7 @@ func (x *SearchFileResponse) String() string {
 func (*SearchFileResponse) ProtoMessage() {}
 
 func (x *SearchFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[5]
+	mi := &file_file_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -347,7 +348,7 @@ func (x *SearchFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchFileResponse.ProtoReflect.Descriptor instead.
 func (*SearchFileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{5}
+	return file_file_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SearchFileResponse) GetResults() []string {
@@ -368,7 +369,7 @@ type ConvertFileRequest struct {
 
 func (x *ConvertFileRequest) Reset() {
 	*x = ConvertFileRequest{}
-	mi := &file_proto_file_proto_msgTypes[6]
+	mi := &file_file_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -380,7 +381,7 @@ func (x *ConvertFileRequest) String() string {
 func (*ConvertFileRequest) ProtoMessage() {}
 
 func (x *ConvertFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[6]
+	mi := &file_file_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -393,7 +394,7 @@ func (x *ConvertFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConvertFileRequest.ProtoReflect.Descriptor instead.
 func (*ConvertFileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{6}
+	return file_file_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ConvertFileRequest) GetFileId() string {
@@ -427,7 +428,7 @@ type ConvertFileResponse struct {
 
 func (x *ConvertFileResponse) Reset() {
 	*x = ConvertFileResponse{}
-	mi := &file_proto_file_proto_msgTypes[7]
+	mi := &file_file_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -439,7 +440,7 @@ func (x *ConvertFileResponse) String() string {
 func (*ConvertFileResponse) ProtoMessage() {}
 
 func (x *ConvertFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[7]
+	mi := &file_file_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -452,7 +453,7 @@ func (x *ConvertFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConvertFileResponse.ProtoReflect.Descriptor instead.
 func (*ConvertFileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{7}
+	return file_file_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ConvertFileResponse) GetMessage() string {
@@ -479,7 +480,7 @@ type DeleteFileRequest struct {
 
 func (x *DeleteFileRequest) Reset() {
 	*x = DeleteFileRequest{}
-	mi := &file_proto_file_proto_msgTypes[8]
+	mi := &file_file_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -491,7 +492,7 @@ func (x *DeleteFileRequest) String() string {
 func (*DeleteFileRequest) ProtoMessage() {}
 
 func (x *DeleteFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[8]
+	mi := &file_file_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -504,7 +505,7 @@ func (x *DeleteFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteFileRequest.ProtoReflect.Descriptor instead.
 func (*DeleteFileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{8}
+	return file_file_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteFileRequest) GetFileId() string {
@@ -530,7 +531,7 @@ type DeleteFileResponse struct {
 
 func (x *DeleteFileResponse) Reset() {
 	*x = DeleteFileResponse{}
-	mi := &file_proto_file_proto_msgTypes[9]
+	mi := &file_file_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -542,7 +543,7 @@ func (x *DeleteFileResponse) String() string {
 func (*DeleteFileResponse) ProtoMessage() {}
 
 func (x *DeleteFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[9]
+	mi := &file_file_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -555,7 +556,7 @@ func (x *DeleteFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteFileResponse.ProtoReflect.Descriptor instead.
 func (*DeleteFileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{9}
+	return file_file_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteFileResponse) GetMessage() string {
@@ -575,7 +576,7 @@ type AnalyzeFileRequest struct {
 
 func (x *AnalyzeFileRequest) Reset() {
 	*x = AnalyzeFileRequest{}
-	mi := &file_proto_file_proto_msgTypes[10]
+	mi := &file_file_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -587,7 +588,7 @@ func (x *AnalyzeFileRequest) String() string {
 func (*AnalyzeFileRequest) ProtoMessage() {}
 
 func (x *AnalyzeFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[10]
+	mi := &file_file_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,7 +601,7 @@ func (x *AnalyzeFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnalyzeFileRequest.ProtoReflect.Descriptor instead.
 func (*AnalyzeFileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{10}
+	return file_file_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AnalyzeFileRequest) GetFileId() string {
@@ -626,7 +627,7 @@ type AnalyzeFileResponse struct {
 
 func (x *AnalyzeFileResponse) Reset() {
 	*x = AnalyzeFileResponse{}
-	mi := &file_proto_file_proto_msgTypes[11]
+	mi := &file_file_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -638,7 +639,7 @@ func (x *AnalyzeFileResponse) String() string {
 func (*AnalyzeFileResponse) ProtoMessage() {}
 
 func (x *AnalyzeFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_file_proto_msgTypes[11]
+	mi := &file_file_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -651,7 +652,7 @@ func (x *AnalyzeFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnalyzeFileResponse.ProtoReflect.Descriptor instead.
 func (*AnalyzeFileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_file_proto_rawDescGZIP(), []int{11}
+	return file_file_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AnalyzeFileResponse) GetStructure() string {
@@ -661,11 +662,12 @@ func (x *AnalyzeFileResponse) GetStructure() string {
 	return ""
 }
 
-var File_proto_file_proto protoreflect.FileDescriptor
+var File_file_proto protoreflect.FileDescriptor
 
-const file_proto_file_proto_rawDesc = "" +
+const file_file_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/file.proto\x12\x0ffile_processing\"*\n" +
+	"\n" +
+	"file.proto\x12\x0ffile_processing\x1a\x1cgoogle/api/annotations.proto\"*\n" +
 	"\x0fGetFilesRequest\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\"\xbd\x01\n" +
 	"\x10GetFilesResponse\x12\x17\n" +
@@ -704,32 +706,32 @@ const file_proto_file_proto_rawDesc = "" +
 	"\afile_id\x18\x01 \x01(\tR\x06fileId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\"3\n" +
 	"\x13AnalyzeFileResponse\x12\x1c\n" +
-	"\tstructure\x18\x01 \x01(\tR\tstructure2\x9c\x04\n" +
-	"\x0eFileProcessing\x12O\n" +
-	"\bGetFiles\x12 .file_processing.GetFilesRequest\x1a!.file_processing.GetFilesResponse\x12W\n" +
+	"\tstructure\x18\x01 \x01(\tR\tstructure2\xdf\x05\n" +
+	"\x0eFileProcessing\x12k\n" +
+	"\bGetFiles\x12 .file_processing.GetFilesRequest\x1a!.file_processing.GetFilesResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/v1/files/getFiles\x12x\n" +
 	"\n" +
-	"UploadFile\x12\".file_processing.UploadFileRequest\x1a#.file_processing.UploadFileResponse(\x01\x12U\n" +
+	"UploadFile\x12\".file_processing.UploadFileRequest\x1a#.file_processing.UploadFileResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/files/uploadFile(\x01\x12v\n" +
 	"\n" +
-	"SearchFile\x12\".file_processing.SearchFileRequest\x1a#.file_processing.SearchFileResponse\x12X\n" +
-	"\vConvertFile\x12#.file_processing.ConvertFileRequest\x1a$.file_processing.ConvertFileResponse\x12U\n" +
+	"SearchFile\x12\".file_processing.SearchFileRequest\x1a#.file_processing.SearchFileResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/files/searchFile\x12z\n" +
+	"\vConvertFile\x12#.file_processing.ConvertFileRequest\x1a$.file_processing.ConvertFileResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/v1/files/convertFile\x12v\n" +
 	"\n" +
-	"DeleteFile\x12\".file_processing.DeleteFileRequest\x1a#.file_processing.DeleteFileResponse\x12X\n" +
-	"\vAnalyzeFile\x12#.file_processing.AnalyzeFileRequest\x1a$.file_processing.AnalyzeFileResponseB\x1eZ\x1cfile-processing-api/gen/fileb\x06proto3"
+	"DeleteFile\x12\".file_processing.DeleteFileRequest\x1a#.file_processing.DeleteFileResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/files/deleteFile\x12z\n" +
+	"\vAnalyzeFile\x12#.file_processing.AnalyzeFileRequest\x1a$.file_processing.AnalyzeFileResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/v1/files/analyzeFileB\x1eZ\x1cfile-processing-api/gen/fileb\x06proto3"
 
 var (
-	file_proto_file_proto_rawDescOnce sync.Once
-	file_proto_file_proto_rawDescData []byte
+	file_file_proto_rawDescOnce sync.Once
+	file_file_proto_rawDescData []byte
 )
 
-func file_proto_file_proto_rawDescGZIP() []byte {
-	file_proto_file_proto_rawDescOnce.Do(func() {
-		file_proto_file_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_file_proto_rawDesc), len(file_proto_file_proto_rawDesc)))
+func file_file_proto_rawDescGZIP() []byte {
+	file_file_proto_rawDescOnce.Do(func() {
+		file_file_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_file_proto_rawDesc), len(file_file_proto_rawDesc)))
 	})
-	return file_proto_file_proto_rawDescData
+	return file_file_proto_rawDescData
 }
 
-var file_proto_file_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_proto_file_proto_goTypes = []any{
+var file_file_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_file_proto_goTypes = []any{
 	(*GetFilesRequest)(nil),     // 0: file_processing.GetFilesRequest
 	(*GetFilesResponse)(nil),    // 1: file_processing.GetFilesResponse
 	(*UploadFileRequest)(nil),   // 2: file_processing.UploadFileRequest
@@ -743,7 +745,7 @@ var file_proto_file_proto_goTypes = []any{
 	(*AnalyzeFileRequest)(nil),  // 10: file_processing.AnalyzeFileRequest
 	(*AnalyzeFileResponse)(nil), // 11: file_processing.AnalyzeFileResponse
 }
-var file_proto_file_proto_depIdxs = []int32{
+var file_file_proto_depIdxs = []int32{
 	0,  // 0: file_processing.FileProcessing.GetFiles:input_type -> file_processing.GetFilesRequest
 	2,  // 1: file_processing.FileProcessing.UploadFile:input_type -> file_processing.UploadFileRequest
 	4,  // 2: file_processing.FileProcessing.SearchFile:input_type -> file_processing.SearchFileRequest
@@ -763,26 +765,26 @@ var file_proto_file_proto_depIdxs = []int32{
 	0,  // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_proto_file_proto_init() }
-func file_proto_file_proto_init() {
-	if File_proto_file_proto != nil {
+func init() { file_file_proto_init() }
+func file_file_proto_init() {
+	if File_file_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_file_proto_rawDesc), len(file_proto_file_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_file_proto_rawDesc), len(file_file_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_file_proto_goTypes,
-		DependencyIndexes: file_proto_file_proto_depIdxs,
-		MessageInfos:      file_proto_file_proto_msgTypes,
+		GoTypes:           file_file_proto_goTypes,
+		DependencyIndexes: file_file_proto_depIdxs,
+		MessageInfos:      file_file_proto_msgTypes,
 	}.Build()
-	File_proto_file_proto = out.File
-	file_proto_file_proto_goTypes = nil
-	file_proto_file_proto_depIdxs = nil
+	File_file_proto = out.File
+	file_file_proto_goTypes = nil
+	file_file_proto_depIdxs = nil
 }
