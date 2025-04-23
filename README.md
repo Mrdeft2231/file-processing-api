@@ -13,7 +13,7 @@
 1. Клонируйте репозиторий:
 ```bash
 git clone https://gitlab.crja72.ru/golang/2025/spring/course/projects/go21/auth-api.git
-cd auth-api
+cd file-processing-api
 ```
 
 2. Установите зависимости:

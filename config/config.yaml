@@ -1,5 +1,5 @@
 app:
-  name: "auth-api"
+  name: "file-processing-api"
   version: "0.0.1"
 
 grpc:

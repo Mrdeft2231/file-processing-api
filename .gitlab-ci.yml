@@ -20,7 +20,7 @@ build:
     - go build -v ./...
   artifacts:
     paths:
-      - auth-api
+      - file-processing-api
     expire_in: 1 week
 
 test:
