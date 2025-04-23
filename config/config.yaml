@@ -10,11 +10,11 @@ logger:
   level: "debug"
 
 postgres:
-  pg_user: "postgres"
-  pg_password: "postgres"
+  pg_user: "user"
+  pg_password: "myAwEsOm3pa55@w0rd"
   pg_host: "localhost"
   pg_port: 5432
-  pg_db_name: "postgres"
+  pg_db_name: "db"
   db_max_connections: 2
   db_connection_timeout: 30s
 

@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"gitlab.crja72.ru/golang/2025/spring/course/projects/go21/auth-api/config"
-	app "gitlab.crja72.ru/golang/2025/spring/course/projects/go21/auth-api/internal/app"
+	"github.com/Mrdeft2231/file-processing-api/tree/main/config"
+	app "github.com/Mrdeft2231/file-processing-api/tree/main/internal/app"
 	"log"
 )
 

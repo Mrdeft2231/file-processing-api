@@ -3,8 +3,8 @@ package postgres
 import (
 	"context"
 	"fmt"
+	"github.com/Mrdeft2231/file-processing-api/tree/main/config"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"gitlab.crja72.ru/golang/2025/spring/course/projects/go21/auth-api/config"
 	"time"
 )
 

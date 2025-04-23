@@ -4,13 +4,45 @@ package file_processing;
 
 option go_package = "file-processing-api/gen/file";
 
+import "google/api/annotations.proto";
+
 service FileProcessing {
-  rpc GetFiles(GetFilesRequest) returns (GetFilesResponse);
-  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
-  rpc SearchFile(SearchFileRequest) returns (SearchFileResponse);
-  rpc ConvertFile(ConvertFileRequest) returns (ConvertFileResponse);
-  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
-  rpc AnalyzeFile(AnalyzeFileRequest) returns (AnalyzeFileResponse);
+  rpc GetFiles(GetFilesRequest) returns (GetFilesResponse) {
+    option (google.api.http) = {
+      get: "v1/files/getFiles"
+      body: "*"
+    };
+  }
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {
+    option (google.api.http) = {
+      post: "v1/files/uploadFile"
+      body: "*"
+    };
+  }
+  rpc SearchFile(SearchFileRequest) returns (SearchFileResponse) {
+    option (google.api.http) = {
+      get: "v1/files/searchFile"
+      body: "*"
+    };
+  }
+  rpc ConvertFile(ConvertFileRequest) returns (ConvertFileResponse) {
+    option (google.api.http) = {
+      get: "v1/files/convertFile"
+      body: "*"
+    };
+  }
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {
+    option (google.api.http) = {
+      get: "v1/files/deleteFile"
+      body: "*"
+    };
+  }
+  rpc AnalyzeFile(AnalyzeFileRequest) returns (AnalyzeFileResponse) {
+    option (google.api.http) = {
+      get: "v1/files/analyzeFile"
+      body: "*"
+    };
+  }
 }
 
 

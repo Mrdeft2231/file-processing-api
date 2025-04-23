@@ -2,21 +2,17 @@ package grpcfile
 
 import (
 	"context"
-	pg "github.com/Mrdeft2231/file-processing-api/tree/main/gen/file/proto"
-	"github.com/Mrdeft2231/file-processing-api/tree/main/internal/entity"
+	pb "github.com/Mrdeft2231/file-processing-api/tree/main/gen/file/proto"
 	usecase "github.com/Mrdeft2231/file-processing-api/tree/main/internal/usecase/file"
-	"github.com/google/uuid"
-	"github.com/h2non/filetype"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"io"
-	"time"
 )
 
-var _ pg.FileProcessingServer = (*FileProcessingServer)(nil)
+var _ pb.FileProcessingServer = (*FileProcessingServer)(nil)
 
 type FileProcessingServer struct {
-	pg.UnimplementedFileProcessingServer
+	pb.UnimplementedFileProcessingServer
 	file usecase.FileUseCase
 }
 
@@ -24,11 +20,11 @@ func NewFileProcessingServer(file usecase.FileUseCase) *FileProcessingServer {
 	return &FileProcessingServer{file: file}
 }
 
-func (s *FileProcessingServer) GetFiles(c context.Context, req *pg.GetFilesRequest) (*pg.GetFilesResponse, error) {
+func (s *FileProcessingServer) GetFiles(c context.Context, req *pb.GetFilesRequest) (*pb.GetFilesResponse, error) {
 	return nil, nil
 }
 
-func (s *FileProcessingServer) UploadFile(stream pg.FileProcessing_UploadFileServer) error {
+func (s *FileProcessingServer) UploadFile(stream pb.FileProcessing_UploadFileServer) error {
 	var (
 		fullFile []byte
 		filename string
@@ -50,7 +46,7 @@ func (s *FileProcessingServer) UploadFile(stream pg.FileProcessing_UploadFileSer
 		fullFile = append(fullFile, req.GetChunk()...)
 	}
 
-	if err := s.usecase.ProcessAndSave(fullFile, filename); err != nil {
+	if err := s.file.UploadFile(fullFile, filename); err != nil {
 		return status.Errorf(codes.Internal, "ошибка обработки файла: %v", err)
 	}
 
@@ -59,18 +55,18 @@ func (s *FileProcessingServer) UploadFile(stream pg.FileProcessing_UploadFileSer
 	})
 }
 
-func (s *FileProcessingServer) SearchFile(ctx context.Context, req *pg.SearchFileRequest) (*pg.SearchFileResponse, error) {
+func (s *FileProcessingServer) SearchFile(ctx context.Context, req *pb.SearchFileRequest) (*pb.SearchFileResponse, error) {
 	return nil, nil
 }
 
-func (s *FileProcessingServer) ConvertFile(ctx context.Context, req *pg.ConvertFileRequest) (*pg.ConvertFileResponse, error) {
+func (s *FileProcessingServer) ConvertFile(ctx context.Context, req *pb.ConvertFileRequest) (*pb.ConvertFileResponse, error) {
 	return nil, nil
 }
 
-func (s *FileProcessingServer) DeleteFile(ctx context.Context, req *pg.DeleteFileRequest) (*pg.DeleteFileResponse, error) {
+func (s *FileProcessingServer) DeleteFile(ctx context.Context, req *pb.DeleteFileRequest) (*pb.DeleteFileResponse, error) {
 	return nil, nil
 }
 
-func (s *FileProcessingServer) AnalyzeFile(ctx context.Context, req *pg.AnalyzeFileRequest) (*pg.AnalyzeFileResponse, error) {
+func (s *FileProcessingServer) AnalyzeFile(ctx context.Context, req *pb.AnalyzeFileRequest) (*pb.AnalyzeFileResponse, error) {
 	return nil, nil
 }
