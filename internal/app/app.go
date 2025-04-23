@@ -10,7 +10,9 @@ import (
 	grpcfile "github.com/Mrdeft2231/file-processing-api/tree/main/internal/controller/grpc/file"
 	"github.com/Mrdeft2231/file-processing-api/tree/main/internal/repo/file"
 	"github.com/Mrdeft2231/file-processing-api/tree/main/internal/usecase/file"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/peer"
 	"log"
 	"net"
@@ -50,11 +52,28 @@ func Run(cfg *config.Config, devMode bool) {
 		logger.Fatalf("Failed to listen on port %d: %v", cfg.GRPC.Port, err)
 	}
 
+	// gRPC Gateway mux
+	mux := runtime.NewServeMux()
+	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
+
+	// Регистрируем gRPC-Gateway
+	err = file.RegisterFileProcessingHandlerFromEndpoint(context.Background(), mux, "localhost:50051", opts)
+	if err != nil {
+		log.Fatalf("Failed to register gateway: %v", err)
+	}
+
+	// Регистрируем gRPC-Gateway
+	err = file.RegisterFileProcessingHandlerFromEndpoint(context.Background(), mux, "localhost:50051", opts)
+	if err != nil {
+		log.Fatalf("Failed to register gateway: %v", err)
+	}
+
 	logger.Printf("Starting gRPC server on port %d\n", cfg.GRPC.Port)
 	// Запускаем gRPC-сервер
 	if err := grpcServer.Serve(lis); err != nil {
 		logger.Fatalf("Failed to serve gRPC server: %v", err)
 	}
+
 }
 
 // Интерсепторы для логирования
