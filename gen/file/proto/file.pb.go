@@ -151,7 +151,8 @@ func (x *GetFilesResponse) GetCreateAt() string {
 
 type UploadFileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`
+	Filename      string                 `protobuf:"bytes,1,opt,name=filename,proto3" json:"filename,omitempty"`
+	Chunk         []byte                 `protobuf:"bytes,2,opt,name=chunk,proto3" json:"chunk,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -184,6 +185,13 @@ func (x *UploadFileRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UploadFileRequest.ProtoReflect.Descriptor instead.
 func (*UploadFileRequest) Descriptor() ([]byte, []int) {
 	return file_proto_file_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UploadFileRequest) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
 }
 
 func (x *UploadFileRequest) GetChunk() []byte {
@@ -666,9 +674,10 @@ const file_proto_file_proto_rawDesc = "" +
 	"\tfile_size\x18\x03 \x01(\tR\bfileSize\x12\x1b\n" +
 	"\tmime_type\x18\x04 \x01(\tR\bmimeType\x12\x1c\n" +
 	"\textension\x18\x05 \x01(\tR\textension\x12\x1b\n" +
-	"\tcreate_at\x18\x06 \x01(\tR\bcreateAt\")\n" +
-	"\x11UploadFileRequest\x12\x14\n" +
-	"\x05chunk\x18\x01 \x01(\fR\x05chunk\"G\n" +
+	"\tcreate_at\x18\x06 \x01(\tR\bcreateAt\"E\n" +
+	"\x11UploadFileRequest\x12\x1a\n" +
+	"\bfilename\x18\x01 \x01(\tR\bfilename\x12\x14\n" +
+	"\x05chunk\x18\x02 \x01(\fR\x05chunk\"G\n" +
 	"\x12UploadFileResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x17\n" +
 	"\afile_id\x18\x02 \x01(\tR\x06fileId\"f\n" +

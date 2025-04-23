@@ -29,7 +29,8 @@ message GetFilesResponse {
 
 
 message UploadFileRequest {
-  bytes chunk = 1;
+  string filename = 1;
+  bytes chunk = 2;
 }
 
 
