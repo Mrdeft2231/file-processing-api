@@ -23,7 +23,7 @@ const (
 
 type GetFilesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -69,8 +69,10 @@ type GetFilesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FileId        string                 `protobuf:"bytes,1,opt,name=file_id,json=fileId,proto3" json:"file_id,omitempty"`
 	FileName      string                 `protobuf:"bytes,2,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
-	FilePath      string                 `protobuf:"bytes,3,opt,name=file_path,json=filePath,proto3" json:"file_path,omitempty"`
-	Format        string                 `protobuf:"bytes,4,opt,name=format,proto3" json:"format,omitempty"`
+	FileSize      string                 `protobuf:"bytes,3,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
+	MimeType      string                 `protobuf:"bytes,4,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	Extension     string                 `protobuf:"bytes,5,opt,name=extension,proto3" json:"extension,omitempty"`
+	CreateAt      string                 `protobuf:"bytes,6,opt,name=create_at,json=createAt,proto3" json:"create_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,16 +121,30 @@ func (x *GetFilesResponse) GetFileName() string {
 	return ""
 }
 
-func (x *GetFilesResponse) GetFilePath() string {
+func (x *GetFilesResponse) GetFileSize() string {
 	if x != nil {
-		return x.FilePath
+		return x.FileSize
 	}
 	return ""
 }
 
-func (x *GetFilesResponse) GetFormat() string {
+func (x *GetFilesResponse) GetMimeType() string {
 	if x != nil {
-		return x.Format
+		return x.MimeType
+	}
+	return ""
+}
+
+func (x *GetFilesResponse) GetExtension() string {
+	if x != nil {
+		return x.Extension
+	}
+	return ""
+}
+
+func (x *GetFilesResponse) GetCreateAt() string {
+	if x != nil {
+		return x.CreateAt
 	}
 	return ""
 }
@@ -643,12 +659,14 @@ const file_proto_file_proto_rawDesc = "" +
 	"\n" +
 	"\x10proto/file.proto\x12\x0ffile_processing\"*\n" +
 	"\x0fGetFilesRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"}\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"\xbd\x01\n" +
 	"\x10GetFilesResponse\x12\x17\n" +
 	"\afile_id\x18\x01 \x01(\tR\x06fileId\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12\x1b\n" +
-	"\tfile_path\x18\x03 \x01(\tR\bfilePath\x12\x16\n" +
-	"\x06format\x18\x04 \x01(\tR\x06format\")\n" +
+	"\tfile_size\x18\x03 \x01(\tR\bfileSize\x12\x1b\n" +
+	"\tmime_type\x18\x04 \x01(\tR\bmimeType\x12\x1c\n" +
+	"\textension\x18\x05 \x01(\tR\textension\x12\x1b\n" +
+	"\tcreate_at\x18\x06 \x01(\tR\bcreateAt\")\n" +
 	"\x11UploadFileRequest\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunk\"G\n" +
 	"\x12UploadFileResponse\x12\x18\n" +
