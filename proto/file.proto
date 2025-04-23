@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package file_processing;
+
+// Указываем пакет для Go-кода
+option go_package = "file-processing-api/gen/auth";
+
+service FileProcessing {
+  rpc GetFiles(GetFileRequest) returns (GetFileResponse);
+  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+  rpc SearchFile(SearchFileRequest) returns (SearchFileResponse);
+  rpc ConvertFile(ConvertFileRequest) returns (ConvertFileResponse);
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+  rpc AnalyzeFile(AnalyzeFileRequest) returns (AnalyzeFileResponse);
+}
+
+// Поиск загруженных файлов по id пользователя
+message GetFileRequest {
+  string user_id = 1; // ID пользователя, получающего файлы
+}
+
+message GetFileResponse {
+  string file_id = 1; // Уникальный идентификатор файла
+  string file_name = 2; // Имя файла
+  string file_path = 3; // Путь к файлу
+  string format = 4; // Формат файла
+}
+
+// UploadFileRequest - Запрос для загрузки файла
+message UploadFileRequest {
+  string file_name = 1; // Имя файла
+  bytes file_data = 2;  // Содержимое файла в виде байтов
+  string user_id = 3;   // ID пользователя, который загружает файл
+}
+
+// UploadFileResponse - Ответ после загрузки файла
+message UploadFileResponse {
+  string message = 1; // Сообщение об успешной загрузке
+  string file_id = 2; // Уникальный идентификатор файла
+}
+
+// SearchFileRequest - Запрос для поиска текста в файле
+message SearchFileRequest {
+  string file_id = 1;   // Идентификатор файла
+  string search_term = 2; // Термин для поиска
+  string user_id = 3;   // ID пользователя, выполняющего поиск
+}
+
+// SearchFileResponse - Ответ после поиска текста
+message SearchFileResponse {
+  repeated string results = 1; // Найденные строки или метаданные
+}
+
+// ConvertFileRequest - Запрос для конвертации файла
+message ConvertFileRequest {
+  string file_id = 1;        // Идентификатор файла
+  string target_format = 2;  // Целевой формат (например, "pdf", "csv")
+  string user_id = 3;        // ID пользователя, выполняющего конвертацию
+}
+
+// ConvertFileResponse - Ответ после конвертации файла
+message ConvertFileResponse {
+  string message = 1;      // Сообщение об успешной конвертации
+  bytes converted_data = 2; // Сконвертированный файл в виде байтов
+}
+
+// DeleteFileRequest - Запрос для удаления файла
+message DeleteFileRequest {
+  string file_id = 1; // Идентификатор файла
+  string user_id = 2; // ID пользователя, выполняющего удаление
+}
+
+// DeleteFileResponse - Ответ после удаления файла
+message DeleteFileResponse {
+  string message = 1; // Сообщение об успешном удалении
+}
+
+// AnalyzeFileRequest - Запрос для анализа структуры файла
+message AnalyzeFileRequest {
+  string file_id = 1; // Идентификатор файла
+  string user_id = 2; // ID пользователя, выполняющего анализ
+}
+
+// AnalyzeFileResponse - Ответ после анализа файла
+message AnalyzeFileResponse {
+  string structure = 1; // Структура файла (JSON-дерево, XML-элементы)
+}
