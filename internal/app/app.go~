@@ -40,7 +40,7 @@ func Run(cfg *config.Config, devMode bool) {
 		grpc.UnaryInterceptor(grpcLogUnaryInterceptor),
 	)
 
-	// Создаем и регистрируем gRPC-сервис
+	// Создаем и регистрируем gRPC-сервис Auth
 	fileController := grpcfile.NewFileProcessingServer(fileUseCase)
 	file.RegisterFileProcessingServer(grpcServer, fileController)
 

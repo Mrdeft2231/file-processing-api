@@ -1,4 +1,4 @@
-module github.com/Mrdeft2231/file-processing-api/tree/main
+module https://github.com/Mrdeft2231/file-processing-api/tree/main
 
 go 1.23.4
 
