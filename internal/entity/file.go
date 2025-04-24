@@ -5,7 +5,7 @@ import "time"
 type File struct {
 	FileID    string    `json:"file_id"`
 	Name      string    `json:"file_name"`
-	Size      int64     `json:"file_size"`
+	Size      int       `json:"file_size"`
 	MimeType  string    `json:"file_mime_type"`
 	Content   []byte    `json:"file_content"`
 	Extension string    `json:"file_extension"`

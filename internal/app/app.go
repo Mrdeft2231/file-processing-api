@@ -45,7 +45,7 @@ func Run(cfg *config.Config, devMode bool) {
 	file.RegisterFileProcessingServer(grpcServer, fileController)
 
 	// Слушаем порт gRPC
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", cfg.GRPC.Port))
+	lis, err := net.Listen("tcp", fmt.Sprintf("127.0.0.1:%d", cfg.GRPC.Port))
 	if err != nil {
 		logger.Fatalf("Failed to listen on port %d: %v", cfg.GRPC.Port, err)
 	}
@@ -61,7 +61,13 @@ func Run(cfg *config.Config, devMode bool) {
 // Интерсепторы для логирования
 func grpcLogStreamInterceptor(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
 	logger := log.Default()
-	logger.Printf("gRPC Stream called: %s from %s", info.FullMethod, ss.Context().Value("peer").(*peer.Peer).Addr.String())
+
+	if p, ok := peer.FromContext(ss.Context()); ok && p.Addr != nil {
+		logger.Printf("gRPC Stream called: %s from %s", info.FullMethod, p.Addr.String())
+	} else {
+		logger.Printf("gRPC Stream called: %s from UNKNOWN", info.FullMethod)
+	}
+
 	return handler(srv, ss)
 }
 
@@ -72,19 +78,19 @@ func grpcLogUnaryInterceptor(
 	handler grpc.UnaryHandler,
 ) (interface{}, error) {
 	logger := log.Default()
-	peerInfo, _ := peer.FromContext(ctx)
-	//if !ok {
-	//	logger.Printf("gRPC Unary called: %s from UNKNOWN", info.FullMethod)
-	//} else {
-	//	//logger.Printf("gRPC Unary called: %s from %s", info.FullMethod, peerInfo.Addr.String())
-	//}
+
+	p, ok := peer.FromContext(ctx)
+	addr := "UNKNOWN"
+	if ok && p.Addr != nil {
+		addr = p.Addr.String()
+	}
 
 	resp, err := handler(ctx, req)
 
 	if err != nil {
-		logger.Printf("gRPC Unary response error: %s, method: %s, error: %v", peerInfo.Addr.String(), info.FullMethod, err)
+		logger.Printf("gRPC Unary response error: %s, method: %s, error: %v", addr, info.FullMethod, err)
 	} else {
-		logger.Printf("gRPC Unary response: %s, method: %s, response: %v", peerInfo.Addr.String(), info.FullMethod, resp)
+		logger.Printf("gRPC Unary response: %s, method: %s, response: %v", addr, info.FullMethod, resp)
 	}
 
 	return resp, err

@@ -34,7 +34,7 @@ func (r *repository) GetFiles() (*file.File, error) {
 func (r *repository) UploadFile(file *entity.File) error {
 	fmt.Println("в репозитории")
 	query := `INSERT INTO fileprocessing.files (id, name, size, mime_type, extension, content, created_at)
-        VALUES ($1, $2, $3, $4, $5, $6, $7);`
+        VALUES ($1, $2, $3, $4, $5, $6)`
 
 	_, err := r.db.Exec(context.Background(), query, file.FileID, file.Name, file.Size, file.MimeType, file.Extension, file.Content, file.CreatedAt)
 	if err != nil {

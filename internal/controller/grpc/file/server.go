@@ -2,6 +2,7 @@ package grpcfile
 
 import (
 	"context"
+	"fmt"
 	pb "github.com/Mrdeft2231/file-processing-api/tree/main/gen/file/proto"
 	usecase "github.com/Mrdeft2231/file-processing-api/tree/main/internal/usecase/file"
 	"google.golang.org/grpc/codes"
@@ -25,6 +26,7 @@ func (s *FileProcessingServer) GetFiles(c context.Context, req *pb.GetFilesReque
 }
 
 func (s *FileProcessingServer) UploadFile(stream pb.FileProcessing_UploadFileServer) error {
+	fmt.Println("работает")
 	var (
 		fullFile []byte
 		filename string
@@ -32,6 +34,7 @@ func (s *FileProcessingServer) UploadFile(stream pb.FileProcessing_UploadFileSer
 
 	for {
 		req, err := stream.Recv()
+		fmt.Printf("for %+v\n", req)
 		if err == io.EOF {
 			break
 		}

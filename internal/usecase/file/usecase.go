@@ -1,13 +1,17 @@
 package usecase
 
 import (
+	"bufio"
+	"bytes"
 	"errors"
+	"fmt"
 	"github.com/Mrdeft2231/file-processing-api/tree/main/internal/entity"
 	repository "github.com/Mrdeft2231/file-processing-api/tree/main/internal/repo/file"
 	"github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/google/uuid"
 	"github.com/h2non/filetype"
 	"time"
+	"unicode"
 )
 
 var _ FileUseCase = (*fileUseCase)(nil)
@@ -34,21 +38,38 @@ func (uc *fileUseCase) GetFiles() (*file.File, error) {
 }
 
 func (uc *fileUseCase) UploadFile(file []byte, filename string) error {
+	fmt.Println("в сервисе")
+
 	king, err := filetype.Match(file)
+	fmt.Printf("king %+v\n", king)
 	if err != nil || king == filetype.Unknown {
-		return errors.New("unknown file type")
+		reader := bytes.NewReader(file)
+		scanner := bufio.NewScanner(reader)
+		for scanner.Scan() {
+			line := scanner.Text()
+
+			for _, r := range line {
+				if r > unicode.MaxASCII {
+					return errors.New("файл не опознан")
+				}
+			}
+			king.MIME.Value = "text/.txt"
+			king.Extension = ".txt"
+		}
 	}
 
 	userID := uuid.New().String()
-
+	fmt.Printf("service %+v\n", king)
 	f := &entity.File{
 		FileID:    userID,
 		Name:      filename,
 		MimeType:  king.MIME.Value,
 		Extension: king.Extension,
+		Size:      len(file),
 		Content:   file,
 		CreatedAt: time.Now(),
 	}
+	fmt.Printf("f %+v\n", f)
 	return uc.fileRepo.UploadFile(f)
 }
 
